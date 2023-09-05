@@ -8,16 +8,16 @@ import rain_icon from '../Assets/rain.png';
 import snow_icon from '../Assets/snow.png';
 import wind_icon from '../Assets/wind.png';
 import humidity_icon from '../Assets/humidity.png';
+import { apikey } from '../../utils/env';
 
 const WheatherApp = () => {
-  let api_key = 'f31c6f0784495c81983919a799116fd5';
   const [wicon, setWicon] = useState(cloud_icon);
   const search = async () => {
     const element = document.getElementsByClassName('cityInput');
     if (element[0].value === '') {
       return 0;
     }
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&appid=${api_key}&units=metric`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&appid=${apikey}&units=metric`;
     let response = await fetch(url);
     let data = await response.json();
     const humidity = document.getElementsByClassName('humidity-percent');
